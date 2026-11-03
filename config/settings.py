@@ -58,7 +58,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'], #directorio de plantillas general y globales 'base.html'
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,6 +119,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+#acceso a propiedades globales estaticas como js css y imagenes 
+STATICFILES_DIRS = [BASE_DIR / 'static']
+
+"""
+NOTA : en los html los template si quieren usar las propiedades globales de static arriba de todo fuera del html colocar
+
+{% load static %} => con esto se activa
+
+para usarla dentro de html seria
+ejm
+
+<img src = '{% static 'img/logo.png' %}'> => esto ahorraria hacer => src = static/img/logo.png
+"""
 
 
 # Email
