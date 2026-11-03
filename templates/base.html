@@ -22,6 +22,14 @@
 
                 <button id="boton-tema" class="btn btn-outline-secondary">  🌑/☀️ </button>
 
+                <!-- Botón toggle para móviles -->
+                <button class="navbar-toggler order-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPF"
+                        aria-controls="navbarPF" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                
+
                 <div class="collapse navbar-collapse" id="navbarApp">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
@@ -41,10 +49,10 @@
                             </li>
                         {% else %}
                             <li class="nav-item">
-                                <!-- <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a> -->
+                                <a class="nav-link text-body" href="{% url 'login' %}">Iniciar sesión</a>
                             </li>
                             <li class="nav-item">
-                                <!-- <a class="nav-link" href="{% url 'registro' %}">Registrarse</a> -->
+                                <a class="nav-link text-body" href="{% url 'registro' %}">Registrarse</a>
                             </li>
                         {% endif %}
                     </ul>
