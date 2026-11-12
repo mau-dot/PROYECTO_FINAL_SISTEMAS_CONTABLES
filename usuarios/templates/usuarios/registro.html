@@ -28,44 +28,8 @@
                             {% endif %}
                         </div>
 
-                        <!-- Campo de nombres -->
-                        <div class="mb-3">
-                            <label for="{{ form.nombres.id_for_label }}" class="form-label">Nombres</label>
-                            <input type="text" name="{{ form.nombres.html_name }}"
-                                id="{{ form.nombres.id_for_label }}" class="form-control"
-                                value="{{ form.nombres.value|default_if_none:'' }}">
-                            {% if form.nombres.errors %}
-                            <div class="invalid-feedback d-block">
-                                {{ form.nombres.errors|striptags }}
-                            </div>
-                            {% endif %}
-                        </div>
-
-                        <!-- Campo de apellidos -->
-                        <div class="mb-3">
-                            <label for="{{ form.Apellidos.id_for_label }}" class="form-label">Apellidos</label>
-                            <input type="text" name="{{ form.Apellidos.html_name }}"
-                                id="{{ form.Apellidos.id_for_label }}" class="form-control"
-                                value="{{ form.Apellidos.value|default_if_none:'' }}">
-                            {% if form.Apellidos.errors %}
-                            <div class="invalid-feedback d-block">
-                                {{ form.Apellidos.errors|striptags }}
-                            </div>
-                            {% endif %}
-                        </div>
-
-                        <!-- Campo de edad -->
-                        <div class="mb-3">
-                            <label for="{{ form.edad.id_for_label }}" class="form-label">Edad</label>
-                            <input type="number" name="{{ form.edad.html_name }}"
-                                id="{{ form.edad.id_for_label }}" class="form-control"
-                                value="{{ form.edad.value|default_if_none:'' }}" min="0">
-                            {% if form.edad.errors %}
-                            <div class="invalid-feedback d-block">
-                                {{ form.edad.errors|striptags }}
-                            </div>
-                            {% endif %}
-                        </div>
+                    
+                    
 
                         <!-- Campo de correo -->
                         <div class="mb-3">

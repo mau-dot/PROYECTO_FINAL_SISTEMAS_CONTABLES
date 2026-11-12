@@ -4,9 +4,6 @@ from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.db import models
 
 class Usuario(AbstractUser):
-    nombres = models.CharField(max_length=100, blank=True)
-    apellidos = models.CharField(max_length=100, blank=True)
-    edad = models.PositiveIntegerField(null=True, blank=True)
     email = models.EmailField(unique=True)
 
     # Evitar conflictos de reverse accessors
