@@ -1,14 +1,106 @@
 {% extends "base.html" %}
-{% load  static %}
+{% load static %}
 
-{% block title %} Pagina de inicio {% endblock %}
+{% block title %}Inicio - Sistema Integrador{% endblock %}
 
-{% block content %} 
+{% block content %}
 
-<div class="bg-body text-body">
-    <h1>Mensaje de Bienvenida</h1>
-    <p>Pagina Home</p>
-</div >
+{% if user.is_authenticated %}
+    <!-- ================= PANEL DE CONTROL (DASHBOARD PARA USUARIOS) ================= -->
+    <div class="d-flex justify-content-between align-items-center mb-4 mt-2">
+        <h2 class="fw-bold text-body">Panel de Control</h2>
+        <span class="badge bg-primary fs-6">Sesión activa</span>
+    </div>
 
+    <div class="row g-4">
+        <!-- Tarjeta de Contabilidad -->
+        <div class="col-md-6">
+            <div class="card shadow-sm h-100 border-0 rounded-4">
+                <div class="card-body p-4 d-flex flex-column">
+                    <h4 class="card-title fw-bold text-primary">📊 Módulo de Contabilidad</h4>
+                    <p class="card-text text-muted flex-grow-1 mt-2">
+                        Gestiona el libro diario, genera balances de comprobación y obtén estados financieros precisos en tiempo real.
+                    </p>
+                    <!-- Nota: Cambiarás href="#" por la URL de tu app de contabilidad cuando la crees -->
+                    <a href="#" class="btn btn-outline-primary mt-3 align-self-start">Ir a Contabilidad</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta de Economía -->
+        <div class="col-md-6">
+            <div class="card shadow-sm h-100 border-0 rounded-4">
+                <div class="card-body p-4 d-flex flex-column">
+                    <h4 class="card-title fw-bold text-success">📈 Módulo de Economía</h4>
+                    <p class="card-text text-muted flex-grow-1 mt-2">
+                        Realiza proyecciones financieras, analiza la rentabilidad y evalúa la viabilidad de tus proyectos de inversión.
+                    </p>
+                    <!-- Nota: Cambiarás href="#" por la URL de tu app de economía cuando la crees -->
+                    <a href="#" class="btn btn-outline-success mt-3 align-self-start">Ir a Economía</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta de Resumen Estadístico (Mockup) -->
+        <div class="col-12">
+            <div class="card shadow-sm border-0 rounded-4 mt-2 bg-body-tertiary">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-4 text-body">Resumen General</h5>
+                    <div class="row text-center">
+                        <div class="col-sm-4 mb-3 mb-sm-0">
+                            <h2 class="fw-bold text-body">0</h2>
+                            <span class="text-muted">Asientos Registrados</span>
+                        </div>
+                        <div class="col-sm-4 mb-3 mb-sm-0">
+                            <h2 class="fw-bold text-body">$0.00</h2>
+                            <span class="text-muted">Total Activos</span>
+                        </div>
+                        <div class="col-sm-4">
+                            <h2 class="fw-bold text-body">0</h2>
+                            <span class="text-muted">Proyectos Evaluados</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% else %}
+    <!-- ================= LANDING PAGE (VISTA PARA INVITADOS) ================= -->
+    <div class="p-5 mb-4 bg-body-tertiary rounded-4 shadow-sm text-center mt-3 border">
+        <div class="container-fluid py-4">
+            <h1 class="display-5 fw-bold text-body">Gestión Contable y Económica</h1>
+            <p class="col-md-8 mx-auto fs-5 text-muted mt-3">
+                Un sistema integrador diseñado para centralizar tus operaciones financieras. 
+                Realiza registros contables, genera balances y evalúa la viabilidad de tus proyectos en un solo entorno seguro.
+            </p>
+            <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
+                <a href="{% url 'registro' %}" class="btn btn-primary btn-lg px-4 shadow-sm">Comenzar ahora</a>
+                <a href="{% url 'login' %}" class="btn btn-outline-secondary btn-lg px-4">Iniciar sesión</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row align-items-md-stretch g-4 mb-4">
+        <!-- Beneficio 1 -->
+        <div class="col-md-6">
+            <div class="h-100 p-5 bg-body-tertiary border rounded-4 shadow-sm">
+                <h3 class="fw-bold text-body">Precisión Contable</h3>
+                <p class="text-muted mt-3">
+                    Automatiza el flujo de tus datos. Desde el ingreso del asiento en el libro diario hasta la generación automática del balance general y estado de resultados, minimizando el error humano.
+                </p>
+            </div>
+        </div>
+        <!-- Beneficio 2 -->
+        <div class="col-md-6">
+            <div class="h-100 p-5 bg-body-tertiary border rounded-4 shadow-sm">
+                <h3 class="fw-bold text-body">Evaluación Estratégica</h3>
+                <p class="text-muted mt-3">
+                    Obtén claridad sobre tus inversiones. Calcula indicadores financieros clave como el VAN y la TIR para tomar decisiones estratégicas fundamentadas en datos reales.
+                </p>
+            </div>
+        </div>
+    </div>
+{% endif %}
 
 {% endblock %}

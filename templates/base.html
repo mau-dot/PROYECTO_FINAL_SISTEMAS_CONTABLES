@@ -11,7 +11,7 @@
 <body class="bg-body text-body d-flex flex-column min-vh-100">
 
     <!-- HEADER -->
-    <header>
+    <header class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-dark bg-body shadow-sm">
             <div class="container">
                 <a class="navbar-brand text-body" href="{% url 'home' %}">Sistema Integrador</a>
@@ -45,7 +45,7 @@
                             </li>
                             <li class="nav-item">
                                 <!-- El enlace de logout requerirá que configures su ruta en urls.py -->
-                                <a class="nav-link text-danger" href="#">Cerrar sesión</a>
+                                <a class="nav-link text-danger" href="{% url 'logout' %}">Cerrar sesión</a>
                             </li>
                         {% else %}
                             <li class="nav-item">
