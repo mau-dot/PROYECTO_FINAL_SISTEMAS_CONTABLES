@@ -39,6 +39,6 @@ def logout_view(request):
 
 @login_required
 def perfil_view(request):
-     return request(request, 'usuarios/perfil.html')
+     return render(request, 'usuarios/perfil.html')
 
 
