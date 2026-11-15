@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'home',
     'contabilidad',
     'economia',
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -161,3 +163,6 @@ MAILERS = {
 
 DEFAULT_FROM_EMAIL = 'pg23022@ues.edu.sv'
 
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
