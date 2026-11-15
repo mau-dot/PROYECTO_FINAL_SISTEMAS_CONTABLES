@@ -12,6 +12,16 @@
         <span class="badge bg-primary fs-6">Sesión activa</span>
     </div>
 
+    
+    {% if user.is_authenticated and user.is_superuser %}
+    <div class="mt-3">
+        <!-- El botón usa la etiqueta url nativa de Django para ir al admin -->
+        <a href="{% url 'admin:index' %}" class="btn btn-warning">
+            ⚙️ Panel de Administrador (Superadmin)
+        </a>
+    </div>
+    {% endif %} 
+
     <div class="row g-4">
         <!-- Tarjeta de Contabilidad -->
         <div class="col-md-6">
