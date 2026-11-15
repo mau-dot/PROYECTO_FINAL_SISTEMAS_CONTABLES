@@ -147,6 +147,17 @@ ejm
 
 MAILERS = {
     'default': {
-        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
+        # 'BACKEND': 'django.core.mail.backends.console.EmailBackend',  # -> debug de consola
+        'BACKEND': 'django.core.mail.backends.smtp.EmailBackend',
+        'OPTIONS': {
+            'host': 'smtp.gmail.com',
+            'port': 587,
+            'use_tls': True,
+            'username': 'pg23022@ues.edu.sv',
+            'password': 'nkxncrlfvrazaoql',
+        },
     },
 }
+
+DEFAULT_FROM_EMAIL = 'pg23022@ues.edu.sv'
+
