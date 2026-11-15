@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'home',
     'contabilidad',
     'economia',
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -147,6 +149,20 @@ ejm
 
 MAILERS = {
     'default': {
-        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
+        # 'BACKEND': 'django.core.mail.backends.console.EmailBackend',  # -> debug de consola
+        'BACKEND': 'django.core.mail.backends.smtp.EmailBackend',
+        'OPTIONS': {
+            'host': 'smtp.gmail.com',
+            'port': 587,
+            'use_tls': True,
+            'username': 'pg23022@ues.edu.sv',
+            'password': 'nkxncrlfvrazaoql',
+        },
     },
 }
+
+DEFAULT_FROM_EMAIL = 'pg23022@ues.edu.sv'
+
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
