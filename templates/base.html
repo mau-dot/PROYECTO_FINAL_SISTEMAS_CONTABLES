@@ -15,37 +15,43 @@
     <header class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-dark bg-body shadow-sm">
             <div class="container">
-                <a class="navbar-brand text-body" href="{% url 'home' %}">Sistema Integrador</a>
+                <a class="navbar-brand text-body fw-bold" href="{% url 'home' %}">Sistema Integrador</a>
                 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarApp">
+                <!-- Botón de tema (Lo moví un poco antes del botón de móviles para que no se amontonen) -->
+                <button id="boton-tema" class="btn btn-outline-secondary me-2">  🌑/☀️ </button>
+
+                <!-- Botón toggle para móviles (Dejé solo uno consolidado y corregido) -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarApp"
+                        aria-controls="navbarApp" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-                <button id="boton-tema" class="btn btn-outline-secondary">  🌑/☀️ </button>
-
-                <!-- Botón toggle para móviles -->
-                <button class="navbar-toggler order-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPF"
-                        aria-controls="navbarPF" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                
 
                 <div class="collapse navbar-collapse" id="navbarApp">
+                    <!-- ENLACES PRINCIPALES (Izquierda) -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link text-body" href="{% url 'home' %}">Inicio</a>
                         </li>
+                        
+                        <!-- NUEVOS ENLACES DE MÓDULOS -->
+                        <!-- Los ponemos dentro de un if para que solo los usuarios logueados los vean -->
+                        {% if user.is_authenticated %}
+                            <li class="nav-item ms-lg-3">
+                                <a class="nav-link text-primary-emphasis fw-semibold" href="{% url 'contabilidad:dashboard' %}">Contabilidad</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-body" href="#">Economía</a>
+                            </li>
+                        {% endif %}
                     </ul>
 
-                    <!-- Usuario / Invitado -->
+                    <!-- USUARIO / INVITADO (Derecha) -->
                     <ul class="navbar-nav">
                         {% if user.is_authenticated %}
                             <li class="nav-item">
-                                <a class="nav-link text-white me-3 text-success-emphasis" href="{% url 'perfil' %}">Hola, {{ user.username }}</a>
+                                <a class="nav-link text-success-emphasis me-3" href="{% url 'perfil' %}">Hola, {{ user.username }}</a>
                             </li>
                             <li class="nav-item">
-                                <!-- El enlace de logout requerirá que configures su ruta en urls.py -->
                                 <a class="nav-link text-danger" href="{% url 'logout' %}">Cerrar sesión</a>
                             </li>
                         {% else %}
@@ -53,7 +59,7 @@
                                 <a class="nav-link text-body" href="{% url 'login' %}">Iniciar sesión</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-danger-emphasis" href="{% url 'registro' %}">Registrarse</a>
+                                <a class="nav-link text-danger-emphasis fw-semibold" href="{% url 'registro' %}">Registrarse</a>
                             </li>
                         {% endif %}
                     </ul>
@@ -75,7 +81,7 @@
     {% endif %}
 
     <!-- CONTENIDO DINÁMICO -->
-    <main class="container py-4 flex-grow-1">
+    <main class="container-fluid py-0 px-0 flex-grow-1">
         {% block content %}
         <!-- Aquí se inyectará el contenido de las otras pantallas -->
         {% endblock %}

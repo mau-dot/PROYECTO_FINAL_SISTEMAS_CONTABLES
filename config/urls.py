@@ -19,7 +19,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from home.views import index
+
 
 urlpatterns = [
     #rutas de home
@@ -28,5 +28,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     #rutas de usuarios
-    path('usuarios/', include('usuarios.urls'))
+    path('usuarios/', include('usuarios.urls')),
+
+    #rutas de contabilidad
+    path('contabilidad/', include('contabilidad.urls'))
 ]

@@ -1,0 +1,73 @@
+{% extends 'contabilidad/base_contabilidad.html' %}
+{% load crispy_forms_tags %}
+
+{% block contabilidad_content %}
+<div class="container mt-4">
+    <div class="row">
+        <!-- Columna Izquierda: Formulario de Creación -->
+        <div class="col-md-5">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Agregar Nueva Cuenta</h5>
+                </div>
+                <div class="card-body">
+                    <!-- Bloque para mostrar mensajes de éxito/error -->
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <form method="POST">
+                        {% csrf_token %}
+                        <!-- ¡Magia de Crispy Forms! -->
+                        {{ form|crispy }}
+                        
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Guardar Cuenta
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Columna Derecha: Vista rápida del Catálogo -->
+        <div class="col-md-7">
+            <div class="card shadow-sm">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0">Cuentas Registradas</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Nombre</th>
+                                <th>Tipo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cuenta in cuentas %}
+                            <tr>
+                                <td>{{ cuenta.codigo }}</td>
+                                <td>{{ cuenta.nombre }}</td>
+                                <td>{{ cuenta.tipo }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="3" class="text-center text-muted">No hay cuentas registradas.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
