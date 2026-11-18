@@ -1,0 +1,18 @@
+{% extends 'contabilidad/base_contabilidad.html' %} 
+<!-- ahora heredamos de base_contabilidad, no de base.html -->
+
+{% block contabilidad_content %}
+<div class="card shadow-sm border-0 bg-primary bg-opacity-10 ">
+    <div class="card-body p-5 text-center">
+        <h2 class="text-primary fw-bold mb-3">Bienvenido a Contabilidad</h2>
+        <p class="text-muted fs-5">
+            Seleccione una opción en el menú lateral para comenzar a operar.
+        </p>
+        <hr class="my-4 w-50 mx-auto">
+        <p class="mb-0 text-muted">
+            <small>Fase activa actual: Construcción del Catálogo de Cuentas.</small>
+        </p>
+        
+    </div>
+</div>
+{% endblock %}

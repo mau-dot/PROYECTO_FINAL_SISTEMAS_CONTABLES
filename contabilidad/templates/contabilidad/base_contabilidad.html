@@ -1,0 +1,60 @@
+<!-- contabilidad/templates/contabilidad/base_contabilidad.html -->
+{% extends 'base.html' %} 
+
+{% block content %}
+<style>
+    .min-alto-modulo {
+        /* 75vh significa "75% del alto de la pantalla". 
+           Deja el 25% restante libre para que quepan tu header y tu footer sin generar scroll */
+        min-height: 85vh; 
+    }
+</style>
+
+<div class="container-fluid px-0 py-0 ">
+    
+    
+    <div class="row g-0 min-alto-modulo">
+        
+        <!-- SIDEBAR -->
+        <aside class="col-md-3 col-lg-2 border-end shadow-sm bg-body">
+            
+            <!-- position-sticky mantiene el menú visible al hacer scroll -->
+            <div class="p-3 pt-4 position-sticky top-0">
+                <h6 class="text-primary mb-4 fw-bold text-uppercase">Módulo Contable</h6>
+                
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item mb-1">
+                        <a href="{% url 'contabilidad:dashboard' %}" 
+                           class="nav-link {% if request.resolver_match.url_name == 'dashboard' %}active{% else %}text-body{% endif %}">
+                            <i class="fas fa-home me-2"></i> Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item mb-1">
+                        <a href="{% url 'contabilidad:crear_cuenta' %}" 
+                           class="nav-link {% if request.resolver_match.url_name == 'crear_cuenta' %}active{% else %}text-body{% endif %}">
+                            <i class="fas fa-book me-2"></i> Catálogo
+                        </a>
+                    </li>
+                    <li class="nav-item mb-1">
+                        <a href="#" class="nav-link disabled text-muted">
+                            <i class="fas fa-edit me-2"></i> Libro Diario
+                        </a>
+                    </li>
+                    <li class="nav-item mb-1">
+                        <a href="#" class="nav-link disabled text-muted">
+                            <i class="fas fa-chart-pie me-2"></i> Reportes
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- CONTENIDO DINÁMICO -->
+        <main class="col-md-9 col-lg-10 p-4 bg-body-tertiary">
+            {% block contabilidad_content %}
+            {% endblock %}
+        </main>
+
+    </div>
+</div>
+{% endblock %}
